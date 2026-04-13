@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic';
-
+export const runtime = 'nodejs';
+``
 import { prisma } from '../../lib/prisma';
 
 const UsersPage = async () => {
