@@ -1,10 +1,24 @@
-import UserList_36 from "./_components/UserList_36";
-const UsersPage_36 = () => {
+export const dynamic = 'force-dynamic';
+
+import { prisma } from '../../lib/prisma';
+
+const UsersPage = async () => {
+  const users = await prisma.user.findMany();
+
   return (
     <div>
-      <UserList_36 />
+      <h2>Users</h2>
+      {users.length === 0 ? (
+        <p>No users found...</p>
+      ) : (
+        <ul>
+          {users.map((u) => (
+            <li key={u.id}>{u.email}</li>
+          ))}
+        </ul>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default UsersPage_36;
+export default UsersPage;
